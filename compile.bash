@@ -27,21 +27,29 @@ clean()
 }
 
 make_tests(){
-    src_files=find $SRC_DIR/*.cpp ! -name 'main.cpp'
-    echo $src_files
-    for f in $TEST_DIR/test_*.cpp 
+    # Get src files and remove main.cpp
+    cd $SRC_DIR
+    src_files=$(ls -I main.cpp)
+
+    for f in $(ls ${TEST_DIR}/test_*.cpp);
     do
+        echo waddup
+        echo $f
         testname=$(basename $f .cpp)
-        echo "g++ $f ${SRC_DIR}/*.cpp -o $EXEC_PATH/$testname.exe"
-        g++ $f ${SRC_DIR}/*.cpp -o "$EXEC_PATH/$testname.exe"
+        echo $testname
+        g++ ../$f $src_files -o "../$EXEC_PATH/$testname.exe"
     done
+    cd ..
 }
 
 run_tests(){
-    for f in $EXEC_DIR/test_*.exe
+    for f in $(ls ${EXEC_PATH}/test_*.exe);
     do
+        echo waddup2
         testname=$(basename $f .exe)
-        $EXEC_PATH/$testname.exe > "$OUTPUT_PATH/output_$testname.txt"
+        echo $f
+        echo $testname
+        $EXEC_PATH/$testname.exe > "$OUTPUT_PATH/output_${testname}.txt"
     done
 }
 

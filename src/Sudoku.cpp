@@ -115,6 +115,53 @@ bool Sudoku::isSolved() const{
     return true;
 }
 
+inline num_t Sudoku::get(int ind) const{
+    return squares[ind].getValue();
+}
+
+inline num_t Sudoku::simplify(int ind){
+    return squares[ind].simplify();
+}
+
+int Sudoku::eliminate(int r, int c, num_t val){
+    int count = 0;
+    count += rowEliminate(r, c, val);
+    count += colEliminate(r, c, val);
+    count += boxEliminate(r, c, val);
+}
+
+int Sudoku::rowEliminate(int r, int c, num_t val){
+    int count = 0;
+    for (int i = 0; i < SUDOKU_SIZE; ++i){
+        if (i != c){
+            count += squares[PUZZ_IND(r, i)].eliminate(val);
+        }
+    }
+    return count;
+}
+
+int Sudoku::colEliminate(int r, int c, num_t val){
+    int count = 0;
+    for (int i = 0; i < SUDOKU_SIZE; ++i){
+        if (i != r){
+            count += squares[PUZZ_IND(i, c)].eliminate(val);
+        }
+    }
+    return count;
+}
+
+int Sudoku::boxEliminate(int r, int c, num_t val){
+    int count = 0;
+    for (int rb = BOX_SIZE*(r/BOX_SIZE); rb < BOX_SIZE*(r/BOX_SIZE) + BOX_SIZE; ++rb){
+        for (int cb = BOX_SIZE*(c/BOX_SIZE); cb < BOX_SIZE*(c/BOX_SIZE) + BOX_SIZE; ++cb){
+            if (rb != r && cb != c){
+                count += squares[PUZZ_IND(rb, cb)].eliminate(val);
+            }
+        }
+    }
+    return count;
+}
+
 void Sudoku::print() const{
     for (int r = 0; r < SUDOKU_SIZE; ++r){
         for (int c = 0; c < SUDOKU_SIZE; ++c){

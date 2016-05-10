@@ -3,6 +3,7 @@
 #include "../include/sudoku_definitions.h"
 #include "../include/Sudoku.h"
 #include "../include/SudokuIO.h"
+#include "../include/Solver.h"
 
 int main(int argc, char* argv[]){
     if (argc < 2){
@@ -14,7 +15,8 @@ int main(int argc, char* argv[]){
         std::fstream file(argv[i], std::fstream::in);
         if(file.is_open()){
             Sudoku* puzz = SudokuIO::readSudokuFile(&file);
-            //puzz->solve();
+            Solver sol(puzz);
+            //sol->solve();
             std::cout << argv[i] << std::endl;
             puzz->print();
             delete puzz;
