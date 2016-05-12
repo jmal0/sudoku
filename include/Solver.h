@@ -1,14 +1,12 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
-#include "sudoku_definitions.h"
-#include "Sudoku.h"
+#include "SudokuPackage.h"
 
 class Solver{
     public:
         Solver();
-        Solver(Sudoku* puzz);
-        ~Solver();
+        Solver(Sudoku*);
         bool canSolve() const;
         bool solve();
         int numEmpty() const;

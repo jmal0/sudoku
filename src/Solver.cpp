@@ -1,4 +1,4 @@
-#include "../include/Solver.h"
+#include "../include/SudokuPackage.h"
 
 Solver::Solver(Sudoku* p){
     puzz = p;
@@ -9,8 +9,6 @@ Solver::Solver(Sudoku* p){
         }
     }
 }
-
-Solver::~Solver(){}
 
 bool Solver::canSolve() const{
     return puzz->validate();

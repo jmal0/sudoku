@@ -2,8 +2,7 @@
 #define SUDOKUIO_H
 
 #include <fstream>
-#include "sudoku_definitions.h"
-#include "Sudoku.h"
+#include "SudokuPackage.h"
 
 namespace SudokuIO {
     Sudoku* readSudokuFile(std::fstream*);

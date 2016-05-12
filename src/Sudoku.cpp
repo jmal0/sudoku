@@ -1,5 +1,4 @@
-#include "../include/sudoku_definitions.h"
-#include "../include/Sudoku.h"
+#include "../include/SudokuPackage.h"
 
 bool validateGrid(num_t grid[SUDOKU_SIZE*SUDOKU_SIZE]){
     for (num_t num = 1; num <= SUDOKU_SIZE; ++num){
@@ -58,8 +57,6 @@ Sudoku::Sudoku(num_t ref[SUDOKU_SIZE*SUDOKU_SIZE]){
     }
 }
 
-Sudoku::~Sudoku(){}
-
 bool Sudoku::isSolved() const{
     bool found[SUDOKU_SIZE];
     for (int i = 0; i < SUDOKU_SIZE; ++i){
@@ -115,14 +112,6 @@ bool Sudoku::isSolved() const{
     return true;
 }
 
-inline num_t Sudoku::get(int ind) const{
-    return squares[ind].getValue();
-}
-
-inline num_t Sudoku::simplify(int ind){
-    return squares[ind].simplify();
-}
-
 int Sudoku::eliminate(int r, int c, num_t val){
     int count = 0;
     count += rowEliminate(r, c, val);
@@ -160,6 +149,10 @@ int Sudoku::boxEliminate(int r, int c, num_t val){
         }
     }
     return count;
+}
+
+bool Sudoku::validate(){
+    return validateGrid(grid);
 }
 
 void Sudoku::print() const{

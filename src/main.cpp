@@ -1,9 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "../include/sudoku_definitions.h"
-#include "../include/Sudoku.h"
-#include "../include/SudokuIO.h"
-#include "../include/Solver.h"
+#include "../include/SudokuPackage.h"
 
 int main(int argc, char* argv[]){
     if (argc < 2){
@@ -19,7 +16,6 @@ int main(int argc, char* argv[]){
             //sol->solve();
             std::cout << argv[i] << std::endl;
             puzz->print();
-            delete puzz;
         }
         file.close();
     }

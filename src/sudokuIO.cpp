@@ -1,4 +1,4 @@
-#include "../include/sudokuIO.h"
+#include "../include/SudokuPackage.h"
 
 Sudoku* SudokuIO::readSudokuFile(std::fstream* file){
     num_t grid[SUDOKU_SIZE*SUDOKU_SIZE];

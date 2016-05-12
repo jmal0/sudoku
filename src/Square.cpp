@@ -1,5 +1,4 @@
-#include "../include/sudoku_definitions.h"
-#include "../include/Square.h"
+#include "../include/SudokuPackage.h"
 
 Square::Square(){
     value = 0;
@@ -14,8 +13,6 @@ Square::Square(num_t val){
         possibilities[i] = i+1 == val;
     }
 }
-
-Square::~Square(){}
 
 /**
  * Eliminates the number [val] as a possibility for this square

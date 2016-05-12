@@ -2,9 +2,7 @@
 #define SUDOKU_H
 
 #include <iostream>
-#include <cstdio>
-#include "sudoku_definitions.h"
-#include "Square.h"
+#include "SudokuPackage.h"
 
 bool validateGrid(num_t*);
 
@@ -13,9 +11,14 @@ class Sudoku{
         Sudoku(num_t*);
         ~Sudoku();
         bool isSolved() const;
-        num_t get(int) const;
-        num_t simplify(int);
+        inline num_t get(int ind) const{
+            return squares[ind].getValue();
+        }
+        inline num_t simplify(int ind){
+            return squares[ind].simplify();
+        }
         int eliminate(int r, int c, num_t val);
+        bool validate();
         void print() const;
     private:
         num_t grid[SUDOKU_SIZE*SUDOKU_SIZE];
