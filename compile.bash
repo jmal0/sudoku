@@ -17,7 +17,7 @@ make()
 run()
 {
     cd "${EXEC_PATH}"
-    ./sudoku.exe
+    ./sudoku.exe "$@"
 }
 
 clean()
@@ -33,10 +33,7 @@ make_tests(){
 
     for f in $(ls ${TEST_DIR}/test_*.cpp);
     do
-        echo waddup
-        echo $f
         testname=$(basename $f .cpp)
-        echo $testname
         g++ ../$f $src_files -o "../$EXEC_PATH/$testname.exe"
     done
     cd ..
@@ -45,18 +42,13 @@ make_tests(){
 run_tests(){
     for f in $(ls ${EXEC_PATH}/test_*.exe);
     do
-        echo waddup2
         testname=$(basename $f .exe)
-        echo $f
-        echo $testname
         $EXEC_PATH/$testname.exe > "$OUTPUT_PATH/output_${testname}.txt"
     done
 }
 
 # Must run in base directory
 cd $(dirname $0)
-# Argument to compile/run/create
-num=$2
 
 if [[ ! -d ./$EXEC_PATH ]]; then
     mkdir $EXEC_PATH
@@ -70,7 +62,7 @@ case $1 in
         make
     ;;
     "run" )
-        run
+        run "${@:2}"
     ;;
     "clean" )
         clean

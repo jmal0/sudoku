@@ -158,7 +158,7 @@ bool Sudoku::validate(){
 void Sudoku::print() const{
     for (int r = 0; r < SUDOKU_SIZE; ++r){
         for (int c = 0; c < SUDOKU_SIZE; ++c){
-           printf("%c ", grid[PUZZ_IND(r,c)] + '0');
+           std::cout << static_cast<char>(grid[PUZZ_IND(r,c)] + '0') << " ";
         }
         std::cout << std::endl;
     }
