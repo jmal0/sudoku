@@ -8,10 +8,10 @@ Sudoku* SudokuIO::readSudokuFile(std::fstream* file){
         while(ch == ' ' || ch == '\n'){
             file->get(ch);
         }
-        if(ch < '0' || ch > '9'){
+        if(ch < MIN_CHAR || ch > MAX_CHAR){
             return NULL;
         }
-        grid[i] = ch - '0';
+        grid[i] = ch - MIN_CHAR;
         i++;
     }
     if(i == SUDOKU_SIZE*SUDOKU_SIZE){
