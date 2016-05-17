@@ -10,9 +10,10 @@ int main(int argc, const char* argv[]){
     }
 
     for (int i = 1; i < argc; ++i){
-        std::fstream file(("../" + static_cast<std::string>(argv[i])).c_str(), std::fstream::in);
+        std::fstream file((static_cast<std::string>(argv[i])).c_str(), std::fstream::in);
         std::cout << argv[i] << std::endl;
         if(file.is_open()){
+            std::cout << "opened" << std::endl;
             Sudoku* puzz = SudokuIO::readSudokuFile(&file);
             Solver sol(puzz);
             //sol->solve();

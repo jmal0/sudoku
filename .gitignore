@@ -1,3 +1,4 @@
-bin/
+sudoku
+obj
 test/output
 *.stackdump
