@@ -1,17 +1,17 @@
 #include "../include/SudokuPackage.h"
 
-Solver::Solver(Sudoku* p){
+Solver::Solver(Sudoku& p){
     puzz = p;
     empty = 0;
     for (int i = 0; i < SUDOKU_SIZE*SUDOKU_SIZE; ++i){
-        if (p->get(i) == EMPTY){
+        if (p.get(i) == EMPTY){
             ++empty;
         }
     }
 }
 
 bool Solver::canSolve() const{
-    return puzz->validate();
+    return puzz.validate();
 }
 
 bool Solver::solve(){
@@ -20,9 +20,9 @@ bool Solver::solve(){
     do{
         empty_before = empty;
         for (int i = 0; i < SUDOKU_SIZE*SUDOKU_SIZE; ++i){
-            num_t val = puzz->simplify(i);
+            num_t val = puzz.simplify(i);
             if (val != EMPTY){
-                empty -= puzz->eliminate(i / SUDOKU_SIZE, i % SUDOKU_SIZE, val);
+                empty -= puzz.eliminate(i / SUDOKU_SIZE, i % SUDOKU_SIZE, val);
             }
         }
     } while (!doneSolving() && empty_before - empty > 0);

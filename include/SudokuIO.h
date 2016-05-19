@@ -5,7 +5,7 @@
 #include "SudokuPackage.h"
 
 namespace SudokuIO {
-    Sudoku* readSudokuFile(std::fstream*);
+    Sudoku readSudokuFile(std::fstream*);
 }
 
 #endif

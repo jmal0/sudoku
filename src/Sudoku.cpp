@@ -1,6 +1,6 @@
 #include "../include/SudokuPackage.h"
 
-bool validateGrid(num_t grid[SUDOKU_SIZE*SUDOKU_SIZE]){
+bool validateGrid(const num_t grid[SUDOKU_SIZE*SUDOKU_SIZE]){
     for (num_t num = 1; num <= SUDOKU_SIZE; ++num){
         bool found;
         // Check rows
@@ -49,6 +49,8 @@ bool validateGrid(num_t grid[SUDOKU_SIZE*SUDOKU_SIZE]){
     }
     return true;
 }
+
+Sudoku::Sudoku(){}
 
 Sudoku::Sudoku(num_t ref[SUDOKU_SIZE*SUDOKU_SIZE]){
     for (int i = 0; i < SUDOKU_SIZE*SUDOKU_SIZE; ++i){
@@ -151,7 +153,7 @@ int Sudoku::boxEliminate(int r, int c, num_t val){
     return count;
 }
 
-bool Sudoku::validate(){
+bool Sudoku::validate() const{
     return validateGrid(grid);
 }
 

@@ -14,10 +14,12 @@ int main(int argc, const char* argv[]){
         std::cout << argv[i] << std::endl;
         if(file.is_open()){
             std::cout << "opened" << std::endl;
-            Sudoku* puzz = SudokuIO::readSudokuFile(&file);
-            Solver sol(puzz);
-            //sol->solve();
-            puzz->print();
+            Sudoku puzz = SudokuIO::readSudokuFile(&file);
+            if (&puzz != NULL){
+                Solver sol(puzz);
+                sol.solve();
+                puzz.print();
+            }
         }
         file.close();
     }

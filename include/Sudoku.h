@@ -4,12 +4,12 @@
 #include <iostream>
 #include "SudokuPackage.h"
 
-bool validateGrid(num_t*);
+bool validateGrid(const num_t*);
 
 class Sudoku{
     public:
+        Sudoku();
         Sudoku(num_t*);
-        ~Sudoku();
         bool isSolved() const;
         inline num_t get(int ind) const{
             return squares[ind].getValue();
@@ -18,7 +18,7 @@ class Sudoku{
             return squares[ind].simplify();
         }
         int eliminate(int r, int c, num_t val);
-        bool validate();
+        bool validate() const;
         void print() const;
     private:
         num_t grid[SUDOKU_SIZE*SUDOKU_SIZE];

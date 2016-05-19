@@ -6,12 +6,12 @@
 class Solver{
     public:
         Solver();
-        Solver(Sudoku*);
+        Solver(Sudoku&);
         bool canSolve() const;
         bool solve();
         int numEmpty() const;
     private:
-        Sudoku* puzz;
+        Sudoku puzz;
         int empty;
         bool doneSolving() const;
         int countEmpty() const;
