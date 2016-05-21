@@ -10,6 +10,9 @@ class Solver{
         bool canSolve() const;
         bool solve();
         int numEmpty() const;
+        inline void print() const{
+            puzz.print();
+        }
     private:
         Sudoku puzz;
         int empty;

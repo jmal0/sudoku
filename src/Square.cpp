@@ -9,8 +9,15 @@ Square::Square(){
 
 Square::Square(num_t val){
     value = val;
-    for (int i = 0; i < SUDOKU_SIZE; ++i){
-        possibilities[i] = i+1 == val;
+    if(val == EMPTY){
+        for (int i = 0; i < SUDOKU_SIZE; ++i){
+            possibilities[i] = true;
+        }
+    }
+    else{
+        for (int i = 0; i < SUDOKU_SIZE; ++i){
+            possibilities[i] = i == val;
+        }   
     }
 }
 
@@ -32,25 +39,18 @@ bool Square::eliminate(num_t val){
  * @return  The only possible value of this square or 0 if > 1 possibility
  */
 num_t Square::simplify() const{
-    if(value != EMPTY){
+    if (value != EMPTY){
         return value;
     }
 
     num_t val = 0;
     for (int i = 0; i < SUDOKU_SIZE; ++i){
-        if(!val && possibilities[i]){
+        if (!val && possibilities[i]){
             val = i+1;
         }
-        else if(val && possibilities[i]){
+        else if (val && possibilities[i]){
             return EMPTY;
         }
     }
     return val;
-}
-
-/**
- * @return  The value this square should take or 0 if not known
- */
-num_t Square::getValue() const{
-    return value;
 }

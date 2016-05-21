@@ -9,7 +9,15 @@ class Square{
         Square(num_t);
         bool eliminate(num_t);
         num_t simplify() const;
-        num_t getValue() const;
+        /**
+         * @return  The value this square should take or 0 if not known
+         */
+        inline num_t getValue() const{
+            return value;
+        }
+        inline void setValue(num_t val){
+            value = val;
+        }
     private:
         bool possibilities[SUDOKU_SIZE];
         num_t value;

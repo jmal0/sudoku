@@ -114,11 +114,19 @@ bool Sudoku::isSolved() const{
     return true;
 }
 
+num_t Sudoku::simplify(int ind){
+    if (grid[ind] != EMPTY){
+        return EMPTY;
+    }
+    return squares[ind].simplify();
+}
+
 int Sudoku::eliminate(int r, int c, num_t val){
     int count = 0;
     count += rowEliminate(r, c, val);
     count += colEliminate(r, c, val);
     count += boxEliminate(r, c, val);
+    return count;
 }
 
 int Sudoku::rowEliminate(int r, int c, num_t val){

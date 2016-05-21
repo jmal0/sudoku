@@ -14,9 +14,11 @@ class Sudoku{
         inline num_t get(int ind) const{
             return squares[ind].getValue();
         }
-        inline num_t simplify(int ind){
-            return squares[ind].simplify();
+        inline void set(int ind, num_t val){
+            grid[ind] = val;
+            squares[ind].setValue(val);
         }
+        num_t simplify(int);
         int eliminate(int r, int c, num_t val);
         bool validate() const;
         void print() const;

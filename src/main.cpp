@@ -18,7 +18,7 @@ int main(int argc, const char* argv[]){
             if (&puzz != NULL){
                 Solver sol(puzz);
                 sol.solve();
-                puzz.print();
+                sol.print();
             }
         }
         file.close();
