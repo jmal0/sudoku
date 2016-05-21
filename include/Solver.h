@@ -11,7 +11,7 @@ class Solver{
         bool solve();
         int numEmpty() const;
         inline void print() const{
-            puzz.print();
+            this->puzz.print();
         }
     private:
         Sudoku puzz;

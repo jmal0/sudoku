@@ -1,22 +1,22 @@
 #include "../include/SudokuPackage.h"
 
 Square::Square(){
-    value = 0;
+    this->value = 0;
     for (int i = 0; i < SUDOKU_SIZE; ++i){
-        possibilities[i] = true;
+        this->possibilities[i] = true;
     }
 }
 
 Square::Square(num_t val){
-    value = val;
+    this->value = val;
     if(val == EMPTY){
         for (int i = 0; i < SUDOKU_SIZE; ++i){
-            possibilities[i] = true;
+            this->possibilities[i] = true;
         }
     }
     else{
         for (int i = 0; i < SUDOKU_SIZE; ++i){
-            possibilities[i] = i == val;
+            this->possibilities[i] = i == val;
         }   
     }
 }
@@ -27,8 +27,8 @@ Square::Square(num_t val){
  * @return     Boolean indicating if the possibility needed to be eliminated
  */
 bool Square::eliminate(num_t val){
-    if (possibilities[val-1]){
-        possibilities[val-1] = false;
+    if (this->possibilities[val-1]){
+        this->possibilities[val-1] = false;
         return true;
     }
     return false;
@@ -39,16 +39,16 @@ bool Square::eliminate(num_t val){
  * @return  The only possible value of this square or 0 if > 1 possibility
  */
 num_t Square::simplify() const{
-    if (value != EMPTY){
-        return value;
+    if (this->value != EMPTY){
+        return this->value;
     }
 
     num_t val = 0;
     for (int i = 0; i < SUDOKU_SIZE; ++i){
-        if (!val && possibilities[i]){
+        if (!val && this->possibilities[i]){
             val = i+1;
         }
-        else if (val && possibilities[i]){
+        else if (val && this->possibilities[i]){
             return EMPTY;
         }
     }

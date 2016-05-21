@@ -12,11 +12,11 @@ class Sudoku{
         Sudoku(num_t*);
         bool isSolved() const;
         inline num_t get(int ind) const{
-            return squares[ind].getValue();
+            return this->squares[ind].getValue();
         }
         inline void set(int ind, num_t val){
-            grid[ind] = val;
-            squares[ind].setValue(val);
+            this->grid[ind] = val;
+            this->squares[ind].setValue(val);
         }
         num_t simplify(int);
         int eliminate(int r, int c, num_t val);

@@ -13,10 +13,10 @@ class Square{
          * @return  The value this square should take or 0 if not known
          */
         inline num_t getValue() const{
-            return value;
+            return this->value;
         }
         inline void setValue(num_t val){
-            value = val;
+            this->value = val;
         }
     private:
         bool possibilities[SUDOKU_SIZE];
