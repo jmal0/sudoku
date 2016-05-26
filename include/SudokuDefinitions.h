@@ -1,8 +1,6 @@
 #ifndef SUDOKU_DEFINITIONS_H
 #define SUDOKU_DEFINITIONS_H
 
-#define PUZZ_IND(R, C) R*SUDOKU_SIZE + C
-
 typedef char num_t;
 
 namespace SudokuDefinitions{

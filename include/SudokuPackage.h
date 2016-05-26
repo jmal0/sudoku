@@ -12,6 +12,14 @@ inline int PUZZ_IND(int r, int c){
     return r*SUDOKU_SIZE + c;
 }
 
+inline int BOX_R(int b, int i){
+    return (b / BOX_SIZE)*BOX_SIZE + i / BOX_SIZE;
+}
+
+inline int BOX_C(int b, int i){
+    return (b % BOX_SIZE)*BOX_SIZE + i % BOX_SIZE;
+}
+
 #include "Square.h"
 #include "Sudoku.h"
 #include "Solver.h"

@@ -54,3 +54,10 @@ num_t Square::simplify() const{
     }
     return val;
 }
+
+void Square::setValue(num_t val){
+    for (int i = 0; i < SUDOKU_SIZE; ++i){
+        this->possibilities[i] = false;
+    }
+    this->value = val;
+}
